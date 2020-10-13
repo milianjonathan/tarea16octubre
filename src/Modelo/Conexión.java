@@ -3,6 +3,8 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author ALEXIS VIDES
@@ -14,7 +16,7 @@ public class Conexión {
             Connection con = DriverManager.getConnection(url);
             return con;
         } catch (SQLException ex) {
-            System.out.println(ex.toString());
+            Logger.getLogger(Conexión.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
