@@ -6,13 +6,15 @@
 package Vista;
 
 import java.awt.Color;
+import Modelo.*;
+import java.sql.Connection;
 
 /**
  *
  * @author ALEXIS VIDES
  */
 public class Login extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Login
      */
@@ -133,6 +135,7 @@ public class Login extends javax.swing.JFrame {
 
     private void cmdIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdIngresarActionPerformed
         // TODO add your handling code here:
+        Connection con = Conexión.getConexion();
     }//GEN-LAST:event_cmdIngresarActionPerformed
 
     /**
