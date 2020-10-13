@@ -1,5 +1,5 @@
 package tarea16oct;
-import Vista.*;
+
 
 public class Tarea16oct {
 
