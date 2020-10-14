@@ -15,6 +15,13 @@ public class modeloLogin {
     private int Rango;
     private int Id;
 
+    public modeloLogin(int Id, String usuario, String pass, int rol) {
+        this.Id = Id;
+        this.Nombre = usuario;
+        this.Pass = pass;
+        this.Rango = rol;
+    }
+
     public int getId() {
         return Id;
     }
