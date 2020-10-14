@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,14 +30,16 @@ public class Login {
     public boolean crearUsuario(modeloLogin login) {
         try {
             PreparedStatement sql = conection.prepareStatement("if not exists (select * from sysobjects where name='TB_LOGIN' and xtype='U')\n"
-                    + "       CREATE TABLE TB_LOGIN ( IDmascota varchar(50) not null PRIMARY KEY, \n"
-                    + "	   edad int, nombreDuenio varchar(50), \n"
-                    + "	   raza varchar(30), diagnostico varchar(200), telefono int )");
+                    + "CREATE TABLE TB_LOGIN(\n"
+                    + "id_usuario INT IDENTITY(1,1) NOT NULL PRIMARY KEY,\n"
+                    + "usuario VARCHAR(100) NOT NULL,\n"
+                    + "pass VARCHAR(100) NOT NULL,\n"
+                    + "rol INT NOT NULL);");
             sql.executeQuery();
-            PreparedStatement insertar = conection.prepareStatement("INSERT INTO usuarios VALUES(?,?,?,?)");
-            insertar.setString(1, login.getNombre());
-            insertar.setString(2, login.getPass());
-            insertar.setInt(3, login.getRango());
+            PreparedStatement insertar = conection.prepareStatement("INSERT INTO TB_LOGIN VALUES(?,?,?,?)");
+            insertar.setString(2, login.getNombre());
+            insertar.setString(3, login.getPass());
+            insertar.setInt(4, login.getRango());
 
             return insertar.execute();
         } catch (SQLException ex) {
@@ -46,22 +49,22 @@ public class Login {
 
     }
 
-    public boolean Logear(){
-         try {
+    public ArrayList<modeloLogin> Logear() {
+        ArrayList<modeloLogin> Log = new ArrayList<modeloLogin>();
+        try {
             Statement resultados = conection.createStatement();
 
-            String consulta = "obtener_libros";
-            ResultSet rs = resultados.executeQuery(consulta);
+            ResultSet rs = resultados.executeQuery("obtener_libros");
 
-            
             while (rs.next()) {
-                
+                Log.add(new modeloLogin(rs.getInt("id_usuario"), rs.getString("usuario"), rs.getString("pass"),
+                        rs.getInt("rol")));
             }
-            rs.close();
-            resultados.close();
+
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
-        return false;
+        return Log;
+
     }
 }

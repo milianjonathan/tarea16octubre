@@ -13,6 +13,15 @@ public class modeloLogin {
     private String Nombre;
     private String Pass;
     private int Rango;
+    private int Id;
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
 
     public String getNombre() {
         return Nombre;
