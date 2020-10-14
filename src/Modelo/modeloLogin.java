@@ -12,7 +12,7 @@ package Modelo;
 public class modeloLogin {
     private String Nombre;
     private String Pass;
-    private String Rango;
+    private int Rango;
 
     public String getNombre() {
         return Nombre;
@@ -30,11 +30,11 @@ public class modeloLogin {
         this.Pass = Pass;
     }
 
-    public String getRango() {
+    public int getRango() {
         return Rango;
     }
 
-    public void setRango(String Rango) {
+    public void setRango(int Rango) {
         this.Rango = Rango;
     }
 }
