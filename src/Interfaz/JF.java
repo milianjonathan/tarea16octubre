@@ -7,19 +7,19 @@ package Interfaz;
 import Controlador.Login;
 import Modelo.Conexion;
 import Modelo.modeloLogin;
-import Interfaz.Menu;
 
 /**
  *
  * @author cosio
  */
 public class JF extends javax.swing.JFrame {
-    Conexion con = new Conexion("Colocar String Conexion");
+    Conexion con = new Conexion("jdbc:sqlserver://localhost\\SQLEXPRESS:1433;database=TAREA_MVC;user=usrTIENDA;password=123456;");
     /**
      * Creates new form JF
      */
     public JF() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -121,10 +121,11 @@ public class JF extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel5)))
                         .addGap(18, 18, 18)
                         .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel6))
@@ -170,6 +171,7 @@ public class JF extends javax.swing.JFrame {
        
        Menu men = new Menu();
        men.show();// TODO add your handling code here:
+       this.setVisible(false);
     }//GEN-LAST:event_ConectarseActionPerformed
 
     /**
