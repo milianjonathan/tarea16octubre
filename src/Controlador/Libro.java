@@ -50,7 +50,7 @@ public class Libro {
 
     }
 
-    public ArrayList<modeloLibro> Logear() {
+    public ArrayList<modeloLibro> Buscar() {
         ArrayList<modeloLibro> lib = new ArrayList<modeloLibro>();
         try {
             Statement resultados = conection.createStatement();
