@@ -54,7 +54,7 @@ public class Login {
         try {
             Statement resultados = conection.createStatement();
 
-            ResultSet rs = resultados.executeQuery("obtener_libros");
+            ResultSet rs = resultados.executeQuery("obtener_usuarios");
 
             while (rs.next()) {
                 Log.add(new modeloLogin(rs.getInt("id_usuario"), rs.getString("usuario"), rs.getString("pass"),
