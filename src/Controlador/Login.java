@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -58,7 +58,8 @@ public class Login {
             ResultSet rs = resultados.executeQuery("SELECT * FROM TB_LOGIN");
             //Función: esta funcion toma los valores de usuario y password y devuelve 1 si son correctos o 2 si son incorrectos
             while (rs.next() ) {
-                if (rs.getString("usuario").equals(login.getNombre()) && rs.getString("pass").equals(login.getPass())) {
+                if ((rs.getString("usuario").equals(login.getNombre()) && rs.getString("pass").equals(login.getPass())) 
+                        && (rs.getInt("id_usuario") == login.getId() && rs.getInt("rol")== login.getRango())) {
                     
                     verificador = 1;
                     break;
@@ -75,7 +76,7 @@ public class Login {
                         + " Intente de nuevo","Advertencia",3);
                 return verificador;
             }else{
-                JOptionPane.showMessageDialog(null, "Bienvenido:\t"+login.getNombre(),"Bienvenido",3);
+                JOptionPane.showMessageDialog(null, "Bienvenido:   \t"+login.getNombre(),"Bienvenido",3);
                 return verificador;
             }
         //retorna 1 si es correcto y retorna 2 si es incorrecto
