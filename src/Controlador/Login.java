@@ -36,7 +36,8 @@ public class Login {
                     + "usuario VARCHAR(100) NOT NULL,\n"
                     + "pass VARCHAR(100) NOT NULL,\n"
                     + "rol INT NOT NULL);");
-            sql.executeQuery();
+            
+            sql.execute();
             PreparedStatement insertar = conection.prepareStatement("INSERT INTO TB_LOGIN VALUES(?,?,?,?)");
             insertar.setString(2, login.getNombre());
             insertar.setString(3, login.getPass());
@@ -50,36 +51,33 @@ public class Login {
 
     }
 
-    public int Logear(String usuario, String pass) {
+    public int Logear(modeloLogin login) {
         int verificador = 0;
-        ArrayList<modeloLogin> Log = new ArrayList<modeloLogin>();
         try {
             Statement resultados = conection.createStatement();
-
-            ResultSet rs = resultados.executeQuery("obtener_usuarios");
+            ResultSet rs = resultados.executeQuery("SELECT * FROM TB_LOGIN");
             //Función: esta funcion toma los valores de usuario y password y devuelve 1 si son correctos o 2 si son incorrectos
-            while (rs.next() || verificador == 1) {
-                Log.add(new modeloLogin(rs.getInt("id_usuario"), rs.getString("usuario"), rs.getString("pass"),
-                        rs.getInt("rol")));
-                if (rs.getString("id_usuario").equals(usuario) && rs.getString("pass").equals(pass)) {
-
+            while (rs.next() ) {
+                if (rs.getString("usuario").equals(login.getNombre()) && rs.getString("pass").equals(login.getPass())) {
+                    
                     verificador = 1;
+                    break;
 
                 } else {
                     verificador = 2;
                 }
             }
-            if(verificador == 2){
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(verificador == 2){
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos\n"
                         + " Intente de nuevo","Advertencia",3);
+                return verificador;
             }else{
-                JOptionPane.showMessageDialog(null, "Bienvenido:\t"+usuario,"Bienvenido",3);
+                JOptionPane.showMessageDialog(null, "Bienvenido:\t"+login.getNombre(),"Bienvenido",3);
+                return verificador;
             }
-
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-        }
-        return verificador;
         //retorna 1 si es correcto y retorna 2 si es incorrecto
 
     }

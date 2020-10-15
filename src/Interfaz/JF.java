@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Interfaz;
+
 import Controlador.Login;
 import Modelo.Conexion;
 import Modelo.modeloLogin;
@@ -13,7 +14,9 @@ import Modelo.modeloLogin;
  * @author cosio
  */
 public class JF extends javax.swing.JFrame {
-    Conexion con = new Conexion("jdbc:sqlserver://localhost\\SQLEXPRESS:1433;database=TAREA_MVC;user=usrTIENDA;password=123456;");
+
+    Conexion con = new Conexion("jdbc:sqlserver://localhost:1433;databaseName=TAREA_MVC;user=usrTIENDA;password=123456;");
+
     /**
      * Creates new form JF
      */
@@ -162,16 +165,18 @@ public class JF extends javax.swing.JFrame {
 
     private void ConectarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConectarseActionPerformed
         Login log = new Login(con.Conectar());
-        modeloLogin ml = new modeloLogin(Integer.parseInt(this.ID.getText()),this.Usuario.getText(),this.Contraseña.getText(),Integer.parseInt(this.Rol.getText()));
-        boolean reslt = log.crearUsuario(ml);
-       if (reslt)
-              System.out.println("Se inserta con exito");
-       else
-              System.out.println("Falla el insert");
-       
-       Menu men = new Menu();
-       men.show();// TODO add your handling code here:
-       this.setVisible(false);
+        modeloLogin ml = new modeloLogin(Integer.parseInt(this.ID.getText()), this.Usuario.getText(), this.Contraseña.getText(), Integer.parseInt(this.Rol.getText()));
+        int reslt = log.Logear(ml);
+        System.out.println(reslt);
+        if (reslt == 1) {
+            System.out.println("Bienvenido");
+            Menu men = new Menu();
+            men.setVisible(true);
+            this.setVisible(false);
+        } else {
+            System.out.println("Logeo Incorrecto");
+        }
+
     }//GEN-LAST:event_ConectarseActionPerformed
 
     /**
