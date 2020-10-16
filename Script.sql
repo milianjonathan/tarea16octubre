@@ -29,6 +29,16 @@ AS
 SELECT * FROM TB_LOGIN
 GO;
 
+CREATE PROCEDURE buscar_libro @palabra nvarchar(100)
+AS
+
+SELECT * FROM libro WHERE genero_libro LIKE '%'+@palabra+'%'
+OR CONVERT(varchar(100),fecha_libro) LIKE '%'+@palabra+'%'
+OR nombre_libro LIKE '%'+@palabra+'%' 
+OR autor_libro LIKE '%'+@palabra+'%'
+OR CONVERT(varchar(100),paginas_libro) LIKE '%'+@palabra+'%'
+OR contenido_libro LIKE '%'+@palabra+'%' ;
+
 
 
 
