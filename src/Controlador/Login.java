@@ -63,8 +63,7 @@ public class Login {
             ResultSet rs = resultados.executeQuery("obtener_usuarios");
             //Función: esta funcion toma los valores de usuario y password y devuelve 1 si son correctos o 2 si son incorrectos
             while (rs.next() ) {
-                if ((rs.getString("usuario").equals(login.getNombre()) && rs.getString("pass").equals(login.getPass())) 
-                        && (rs.getInt("id_usuario") == login.getId() && rs.getInt("rol")== login.getRango())) {
+                if ((rs.getString("usuario").equals(login.getNombre()) && rs.getString("pass").equals(login.getPass()))) {
                     
                     verificador = 1;
                     break;
