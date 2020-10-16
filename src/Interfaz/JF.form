@@ -127,13 +127,22 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
         </Component>
         <Component class="javax.swing.JTextField" name="ID">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="1"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IDActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="Usuario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="admin"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="Rol">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="1"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RolActionPerformed"/>
           </Events>
@@ -150,6 +159,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="Contrase&#xf1;a">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="1234"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>

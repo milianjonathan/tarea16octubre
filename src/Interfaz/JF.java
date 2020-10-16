@@ -56,12 +56,16 @@ public class JF extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("HP Simplified", 3, 18)); // NOI18N
         jLabel1.setText("ID");
 
+        ID.setText("1");
         ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IDActionPerformed(evt);
             }
         });
 
+        Usuario.setText("admin");
+
+        Rol.setText("1");
         Rol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RolActionPerformed(evt);
@@ -75,6 +79,8 @@ public class JF extends javax.swing.JFrame {
                 ConectarseActionPerformed(evt);
             }
         });
+
+        Contraseña.setText("1234");
 
         jLabel5.setFont(new java.awt.Font("HP Simplified", 3, 18)); // NOI18N
         jLabel5.setText("Usuario");
