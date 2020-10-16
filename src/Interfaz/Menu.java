@@ -46,6 +46,11 @@ public class Menu extends javax.swing.JFrame {
 
         btnInsertar.setFont(new java.awt.Font("HP Simplified", 3, 18)); // NOI18N
         btnInsertar.setText("Insertar");
+        btnInsertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertarActionPerformed(evt);
+            }
+        });
 
         btnBorrar.setFont(new java.awt.Font("HP Simplified", 3, 18)); // NOI18N
         btnBorrar.setText("Borrar");
@@ -117,12 +122,18 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< Updated upstream
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
        JF inicio = new JF();
        inicio.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_btnSalirActionPerformed
+=======
+    private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInsertarActionPerformed
+>>>>>>> Stashed changes
 
     /**
      * @param args the command line arguments

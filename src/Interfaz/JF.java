@@ -14,9 +14,14 @@ import Modelo.modeloLogin;
  * @author cosio
  */
 public class JF extends javax.swing.JFrame {
+<<<<<<< Updated upstream
 
     Conexion con = new Conexion("jdbc:sqlserver://localhost:1433;databaseName=TAREA_MVC;user=usrTIENDA;password=123456;");
 
+=======
+    Conexion con = new Conexion("jdbc:sqlserver://localhost\\SQLEXPRESS:1433;database=TAREA_MVC;user=usrTIENDA;password=123456;");
+   
+>>>>>>> Stashed changes
     /**
      * Creates new form JF
      */
@@ -165,6 +170,7 @@ public class JF extends javax.swing.JFrame {
 
     private void ConectarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConectarseActionPerformed
         Login log = new Login(con.Conectar());
+<<<<<<< Updated upstream
         modeloLogin ml = new modeloLogin(Integer.parseInt(this.ID.getText()), this.Usuario.getText(), this.Contraseña.getText(), Integer.parseInt(this.Rol.getText()));
         int reslt = log.Logear(ml);
         System.out.println(reslt);
@@ -177,6 +183,18 @@ public class JF extends javax.swing.JFrame {
             System.out.println("Logeo Incorrecto");
         }
 
+=======
+        modeloLogin ml = new modeloLogin(Integer.parseInt(this.ID.getText()),this.Usuario.getText(),this.Contraseña.getText(),Integer.parseInt(this.Rol.getText()));
+        boolean reslt = log.Logear();
+       if (reslt)
+              System.out.println("Se inserta con exito");
+       else
+              System.out.println("Falla el insert");
+       
+       Menu men = new Menu();
+       men.show();// TODO add your handling code here:
+       this.setVisible(false);
+>>>>>>> Stashed changes
     }//GEN-LAST:event_ConectarseActionPerformed
 
     /**
