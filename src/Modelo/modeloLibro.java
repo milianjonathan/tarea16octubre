@@ -28,6 +28,9 @@ public class modeloLibro {
         this.autor = autor;
     }
 
+    public modeloLibro() {
+    }
+    
     public int getId() {
         return id;
     }
@@ -68,7 +71,20 @@ public class modeloLibro {
         this.paginas = paginas;
     }
 
-    
-    
-    
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
 }
