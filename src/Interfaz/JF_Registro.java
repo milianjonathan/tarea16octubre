@@ -198,6 +198,8 @@ public class JF_Registro extends javax.swing.JFrame {
                 this.setVisible(false);
 
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden","Advertencia",3);
         }
 
         // TODO add your handling code here:
