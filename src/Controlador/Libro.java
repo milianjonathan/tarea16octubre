@@ -38,7 +38,6 @@ public class Libro {
                 System.out.println("Ya existe la tabla libro");
             }
             PreparedStatement insertar = conection.prepareStatement("INSERT INTO libro VALUES(?,?,?,?,?,?)");
-            //insertar.setInt(1, libro.getId());
             insertar.setString(1, libro.getGenero());
             insertar.setInt(2, libro.getFecha());
             insertar.setString(3, libro.getNombre());
@@ -46,6 +45,7 @@ public class Libro {
             insertar.setInt(5, libro.getPaginas());
             insertar.setString(6, libro.getContenido());
             insertar.execute();
+            insertar.close();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(Libro.class.getName()).log(Level.SEVERE, null, ex);
@@ -73,24 +73,36 @@ public class Libro {
         return lib;
 
     }
-    
-    //Javier
-    public void Seleccionar_libros(DefaultTableModel model){
-        try {
-            PreparedStatement sql = conection.prepareCall("execute obtener_libros");
-            ResultSet rs = sql.executeQuery();
-            String[] datos = new String[7];
-            
-            while(rs.next()){
-                for(int i =0; i<7;i++){
-                    datos[i] = rs.getString(i+1);
-                }
-                model.addRow(datos);
-            }
-            rs.close();
-            sql.close();
-        } catch (SQLException ex) {
+    /*Javier*/
+    public boolean actualizar(modeloLibro libro){
+        try{
+            PreparedStatement actualizar = conection.prepareStatement("UPDATE libro SET genero_libro=?, fecha_libro=?, nombre_libro=?, autor_libro=?, paginas_libro=?, contenido_libro=? WHERE id_libro =?");
+            actualizar.setString(1, libro.getGenero());
+            actualizar.setInt(2, libro.getFecha());
+            actualizar.setString(3, libro.getNombre());
+            actualizar.setString(4, libro.getAutor());
+            actualizar.setInt(5, libro.getPaginas());
+            actualizar.setString(6, libro.getContenido());
+            actualizar.setInt(7, libro.getId());
+            actualizar.execute();
+            actualizar.close();
+            return true;
+        }catch(SQLException ex){
             Logger.getLogger(Libro.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    public boolean eliminar(modeloLibro libro){
+        try{
+            PreparedStatement eliminar = conection.prepareStatement("DELETE FROM libro WHERE id_libro=?");
+            eliminar.setInt(1, libro.getId());
+            eliminar.execute();
+            eliminar.close();
+            return true;
+        }catch(SQLException ex){
+            Logger.getLogger(Libro.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
 }

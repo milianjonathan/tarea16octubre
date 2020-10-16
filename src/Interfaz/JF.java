@@ -120,29 +120,26 @@ public class JF extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConectarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConectarseActionPerformed
-        int id=0;
+        int id = 0;
         int rol = 0;
         Login log = new Login(con.Conectar());
-        if (this.Usuario.getText().isEmpty() || this.Contraseña.getText().isEmpty() ) {
+        if (this.Usuario.getText().isEmpty() || this.Contraseña.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Llene los datos correspondientes", "AVISO", 2);
         } else {
             modeloLogin ml = new modeloLogin(id, this.Usuario.getText(), this.Contraseña.getText(), rol);
             int reslt = log.Logear(ml);
             rol = ml.getRango();
             if (reslt == 1) {
-                if(rol ==1){
-                   Menu men = new Menu(ml);
-                men.setVisible(true);
-                this.setVisible(false); 
-                }else{
-                    if(rol==2){
-                        menuUsuario menu2 = new menuUsuario();
-                        this.setVisible(false);
-                        menu2.setVisible(true);
-                    }
+                if (rol == 1) {
+                    Menu men = new Menu();
+                    men.setVisible(true);
+                    this.setVisible(false);
+                } else if (rol == 2) {
+                    menuUsuario menu2 = new menuUsuario();
+                    this.setVisible(false);
+                    menu2.setVisible(true);
                 }
-                
-                
+
             } else {
                 System.out.println("Logeo Incorrecto");
             }

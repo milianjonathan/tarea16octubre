@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class ABC extends javax.swing.JFrame {
 
     Conexion con = new Conexion("jdbc:sqlserver://localhost:1433;databaseName=TAREA_MVC;user=usrTIENDA;password=123456;");
-    
+
     modeloLibro modlb = new modeloLibro();
     Menu m = new Menu();
 
@@ -30,10 +30,10 @@ public class ABC extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     public void Mostrar_Tabla() {
-        //Libro lb = new Libro(con.Conectar());
         Connection conectar = con.Conectar();
         String[] Titulos = {"id_libro", "genero_libro", "fecha_libro", "nombre_libro", "autor_libro", "paginas_libro", "contenido_libro"};
         DefaultTableModel Modelo = new DefaultTableModel(null, Titulos) {
@@ -42,23 +42,21 @@ public class ABC extends javax.swing.JFrame {
                 return false;//hace que las celdas de la tabla no se pueda editar, SOLO LECTURA
             }
         };
-        try{
+        try {
             PreparedStatement sql = conectar.prepareCall("execute obtener_libros");
             ResultSet rs = sql.executeQuery();
             String[] datos = new String[7];
-            
-            while(rs.next()){
-                for(int i =0; i<7;i++){
-                    datos[i] = rs.getString(i+1);
+
+            while (rs.next()) {
+                for (int i = 0; i < 7; i++) {
+                    datos[i] = rs.getString(i + 1);
                 }
                 Modelo.addRow(datos);
             }
             jtblLibros.setModel(Modelo);
-        }catch(Exception e){
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-        /*DefaultTableModel Modelo = (DefaultTableModel) jtblLibros.getModel();
-        lb.Seleccionar_libros(Modelo);*/
     }
 
     public void limpiar_texto() {
@@ -68,6 +66,8 @@ public class ABC extends javax.swing.JFrame {
         this.txtFecha.setText("");
         this.txtNombre.setText("");
         this.txtPaginas.setText("");
+        this.txtaContenido.setText("");
+        this.cbxGenero.setSelectedIndex(0);
     }
 
     /**
@@ -100,6 +100,7 @@ public class ABC extends javax.swing.JFrame {
         btnBorrarR = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtaContenido = new javax.swing.JTextArea();
+        btnLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,6 +115,11 @@ public class ABC extends javax.swing.JFrame {
 
             }
         ));
+        jtblLibros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtblLibrosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtblLibros);
 
         jLabel1.setText("ID Libro:");
@@ -130,7 +136,7 @@ public class ABC extends javax.swing.JFrame {
 
         jLabel7.setText("Contenido:");
 
-        cbxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escoger uno...", "Terror", "Romantica", "Ciencia Ficcion", "Historia", "Biografia", "Autoayuda", "Poesia", "Infantil" }));
+        cbxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Terror", "Romantica", "Ciencia Ficcion", "Historia", "Biografia", "Autoayuda", "Poesia", "Infantil" }));
 
         btnIngresarR.setText("Insertar Registro");
         btnIngresarR.addActionListener(new java.awt.event.ActionListener() {
@@ -147,12 +153,29 @@ public class ABC extends javax.swing.JFrame {
         });
 
         btnActualizarR.setText("Actualizar Registro");
+        btnActualizarR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarRActionPerformed(evt);
+            }
+        });
 
         btnBorrarR.setText("Borrar Registro");
+        btnBorrarR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarRActionPerformed(evt);
+            }
+        });
 
         txtaContenido.setColumns(20);
         txtaContenido.setRows(5);
         jScrollPane2.setViewportView(txtaContenido);
+
+        btnLimpiar.setText("Limpiar Textos");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,10 +221,11 @@ public class ABC extends javax.swing.JFrame {
                                         .addComponent(txtPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnIngresarR)
                                     .addComponent(btnActualizarR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnBorrarR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnRegresarMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(btnRegresarMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnIngresarR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -233,11 +257,12 @@ public class ABC extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegresarMenu))
-                .addGap(22, 22, 22)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel5)
+                    .addComponent(btnLimpiar))
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -258,8 +283,8 @@ public class ABC extends javax.swing.JFrame {
 
     private void btnIngresarRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarRActionPerformed
         Libro lb = new Libro(con.Conectar());
-        if (this.cbxGenero.getSelectedItem().toString().isEmpty() || this.txtFecha.getText().isEmpty() || this.txtNombre.getText().isEmpty() || this.txtAutor.getText().isEmpty() || this.txtPaginas.getText().isEmpty() || this.txtaContenido.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Llene los datos correspondientes", "AVISO", 2);
+        if (this.cbxGenero.getSelectedItem().toString() == "Seleccione..." || this.txtFecha.getText().isEmpty() || this.txtNombre.getText().isEmpty() || this.txtAutor.getText().isEmpty() || this.txtPaginas.getText().isEmpty() || this.txtaContenido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Llene los datos correspondientes, escoja un genero", "AVISO", 2);
         } else {
             modlb.setGenero(this.cbxGenero.getSelectedItem().toString());
             modlb.setFecha(Integer.parseInt(this.txtFecha.getText()));
@@ -278,6 +303,63 @@ public class ABC extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnIngresarRActionPerformed
+
+    private void btnActualizarRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarRActionPerformed
+        Libro lb = new Libro(con.Conectar());
+        if (this.txtId.getText().isEmpty() || this.cbxGenero.getSelectedItem().toString() == "Seleccione..." || this.txtFecha.getText().isEmpty() || this.txtNombre.getText().isEmpty() || this.txtAutor.getText().isEmpty() || this.txtPaginas.getText().isEmpty() || this.txtaContenido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Llene los datos correspondientes, escoja un genero", "AVISO", 2);
+        } else {
+            modlb.setId(Integer.parseInt(this.txtId.getText()));
+            modlb.setGenero(this.cbxGenero.getSelectedItem().toString());
+            modlb.setFecha(Integer.parseInt(this.txtFecha.getText()));
+            modlb.setNombre(this.txtNombre.getText());
+            modlb.setAutor(this.txtAutor.getText());
+            modlb.setPaginas(Integer.parseInt(this.txtPaginas.getText()));
+            modlb.setContenido(this.txtaContenido.getText());
+            if (lb.actualizar(modlb)) {
+                JOptionPane.showMessageDialog(null, "Registro actualizado correctamente");
+                limpiar_texto();
+                m.setVisible(true);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al actualizar", "ERROR", JOptionPane.ERROR_MESSAGE);
+                limpiar_texto();
+            }
+        }
+    }//GEN-LAST:event_btnActualizarRActionPerformed
+
+    private void btnBorrarRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarRActionPerformed
+        Libro lb = new Libro(con.Conectar());
+        if (this.txtId.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado o ingresado un registro", "AVISO", 2);
+        } else {
+            modlb.setId(Integer.parseInt(this.txtId.getText()));
+            if (lb.eliminar(modlb)) {
+                JOptionPane.showMessageDialog(null, "Registro borrado correctamente");
+                limpiar_texto();
+                m.setVisible(true);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al borrar", "ERROR", JOptionPane.ERROR_MESSAGE);
+                limpiar_texto();
+            }
+        }
+    }//GEN-LAST:event_btnBorrarRActionPerformed
+
+    private void jtblLibrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtblLibrosMouseClicked
+        int fila = jtblLibros.rowAtPoint(evt.getPoint());
+        txtId.setText(jtblLibros.getValueAt(fila, 0).toString());
+        cbxGenero.setSelectedItem(jtblLibros.getValueAt(fila, 1));
+        txtFecha.setText(jtblLibros.getValueAt(fila, 2).toString());
+        txtNombre.setText(jtblLibros.getValueAt(fila, 3).toString());
+        txtAutor.setText(jtblLibros.getValueAt(fila, 4).toString());
+        txtPaginas.setText(jtblLibros.getValueAt(fila, 5).toString());
+        txtaContenido.setText(jtblLibros.getValueAt(fila, 6).toString());
+    }//GEN-LAST:event_jtblLibrosMouseClicked
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limpiar_texto();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -318,6 +400,7 @@ public class ABC extends javax.swing.JFrame {
     public javax.swing.JButton btnActualizarR;
     public javax.swing.JButton btnBorrarR;
     public javax.swing.JButton btnIngresarR;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnRegresarMenu;
     public javax.swing.JComboBox<String> cbxGenero;
     private javax.swing.JLabel jLabel1;
@@ -329,12 +412,12 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jtblLibros;
+    public javax.swing.JTable jtblLibros;
     public javax.swing.JTextField txtAutor;
     public javax.swing.JTextField txtFecha;
     public javax.swing.JTextField txtId;
     public javax.swing.JTextField txtNombre;
     public javax.swing.JTextField txtPaginas;
-    private javax.swing.JTextArea txtaContenido;
+    public javax.swing.JTextArea txtaContenido;
     // End of variables declaration//GEN-END:variables
 }
