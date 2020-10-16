@@ -31,10 +31,22 @@ public class Libro {
                     + "paginas_libro INT NOT NULL,\n"
                     + "contenido_libro VARCHAR(MAX) NOT NULL);");
 
-            sql.executeQuery();
-            PreparedStatement insertar = conection.prepareStatement("INSERT INTO libro VALUES(?,?,?,?)");
-
-            return insertar.execute();
+            int resultado = sql.executeUpdate();
+            if(resultado == 0){
+                System.out.println("Se creo la tabla la tabla libro correctamente");
+            }else{
+                System.out.println("Ya existe la tabla libro");
+            }
+            PreparedStatement insertar = conection.prepareStatement("INSERT INTO libro VALUES(?,?,?,?,?,?)");
+            //insertar.setInt(1, libro.getId());
+            insertar.setString(1, libro.getGenero());
+            insertar.setInt(2, libro.getFecha());
+            insertar.setString(3, libro.getNombre());
+            insertar.setString(4, libro.getAutor());
+            insertar.setInt(5, libro.getPaginas());
+            insertar.setString(6, libro.getContenido());
+            insertar.execute();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(Libro.class.getName()).log(Level.SEVERE, null, ex);
             return false;
@@ -65,9 +77,10 @@ public class Libro {
     //Javier
     public void Seleccionar_libros(DefaultTableModel model){
         try {
-            PreparedStatement sql = conection.prepareStatement("execute obtener_libros");
+            PreparedStatement sql = conection.prepareCall("execute obtener_libros");
             ResultSet rs = sql.executeQuery();
-            String[] datos = new String[5];
+            String[] datos = new String[7];
+            
             while(rs.next()){
                 for(int i =0; i<7;i++){
                     datos[i] = rs.getString(i+1);

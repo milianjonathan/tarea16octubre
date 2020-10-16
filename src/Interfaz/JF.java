@@ -8,6 +8,7 @@ package Interfaz;
 import Controlador.Login;
 import Modelo.Conexion;
 import Modelo.modeloLogin;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,12 +16,7 @@ import Modelo.modeloLogin;
  */
 public class JF extends javax.swing.JFrame {
 
-
     Conexion con = new Conexion("jdbc:sqlserver://localhost:1433;databaseName=TAREA_MVC;user=usrTIENDA;password=123456;");
-
-
- 
-   
 
     /**
      * Creates new form JF
@@ -28,6 +24,10 @@ public class JF extends javax.swing.JFrame {
     public JF() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.Contraseña.setText("");
+        this.ID.setText("");
+        this.Rol.setText("");
+        this.Usuario.setText("");
     }
 
     /**
@@ -56,16 +56,12 @@ public class JF extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("HP Simplified", 3, 18)); // NOI18N
         jLabel1.setText("ID");
 
-        ID.setText("1");
         ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IDActionPerformed(evt);
             }
         });
 
-        Usuario.setText("admin");
-
-        Rol.setText("1");
         Rol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RolActionPerformed(evt);
@@ -79,8 +75,6 @@ public class JF extends javax.swing.JFrame {
                 ConectarseActionPerformed(evt);
             }
         });
-
-        Contraseña.setText("1234");
 
         jLabel5.setFont(new java.awt.Font("HP Simplified", 3, 18)); // NOI18N
         jLabel5.setText("Usuario");
@@ -176,19 +170,21 @@ public class JF extends javax.swing.JFrame {
 
     private void ConectarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConectarseActionPerformed
         Login log = new Login(con.Conectar());
-
-        modeloLogin ml = new modeloLogin(Integer.parseInt(this.ID.getText()), this.Usuario.getText(), this.Contraseña.getText(), Integer.parseInt(this.Rol.getText()));
-        int reslt = log.Logear(ml);
-        System.out.println(reslt);
-        if (reslt == 1) {
-            System.out.println("Bienvenido");
-            Menu men = new Menu(ml);
-            men.setVisible(true);
-            this.setVisible(false);
+        if (this.ID.getText().isEmpty() || this.Usuario.getText().isEmpty() || this.Contraseña.getText().isEmpty() || this.Rol.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Llene los datos correspondientes", "AVISO", 2);
         } else {
-            System.out.println("Logeo Incorrecto");
+            modeloLogin ml = new modeloLogin(Integer.parseInt(this.ID.getText()), this.Usuario.getText(), this.Contraseña.getText(), Integer.parseInt(this.Rol.getText()));
+            int reslt = log.Logear(ml);
+            System.out.println(reslt);
+            if (reslt == 1) {
+                System.out.println("Bienvenido");
+                Menu men = new Menu(ml);
+                men.setVisible(true);
+                this.setVisible(false);
+            } else {
+                System.out.println("Logeo Incorrecto");
+            }
         }
-
     }//GEN-LAST:event_ConectarseActionPerformed
 
     /**

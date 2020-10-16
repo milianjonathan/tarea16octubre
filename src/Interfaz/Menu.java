@@ -12,8 +12,9 @@ import Modelo.modeloLogin;
  * @author cosio
  */
 public class Menu extends javax.swing.JFrame {
+
     modeloLogin lg;
-    ABC registros = new ABC();
+
     /**
      * Creates new form Menu
      */
@@ -21,14 +22,15 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    public Menu(modeloLogin lg){
+
+    public Menu(modeloLogin lg) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.lg = lg;
-        
-        if(lg.getRango() == 1){
-            
-        }else if(lg.getRango() == 2){
+
+        if (lg.getRango() == 1) {
+
+        } else if (lg.getRango() == 2) {
             btnInsertar.setEnabled(false);
             btnBorrar.setEnabled(false);
             btnActualizar.setEnabled(false);
@@ -141,15 +143,19 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
-       JF inicio = new JF();
-       inicio.setVisible(true);
-       this.setVisible(false);
+        JF inicio = new JF();
+        inicio.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
+        ABC registros = new ABC();
         registros.setVisible(true);
+        registros.btnBorrarR.setVisible(false);
+        registros.btnActualizarR.setVisible(false);
+        registros.txtId.setEnabled(false);
+        registros.Mostrar_Tabla();
     }//GEN-LAST:event_btnInsertarActionPerformed
-
 
     /**
      * @param args the command line arguments
