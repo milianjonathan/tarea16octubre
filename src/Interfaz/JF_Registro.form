@@ -70,15 +70,10 @@
                                       <Component id="jLabel2" pref="210" max="32767" attributes="0"/>
                                       <Component id="label" max="32767" attributes="0"/>
                                   </Group>
+                                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="Usuario" min="-2" pref="199" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                          <Component id="Rol" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="Rol" max="32767" attributes="0"/>
+                                      <Component id="Usuario" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -102,9 +97,9 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="label" max="32767" attributes="0"/>
-                      <Component id="Rol" max="32767" attributes="0"/>
+                      <Component id="Rol" pref="30" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel3" pref="32" max="32767" attributes="0"/>
                       <Component id="Pass" max="32767" attributes="0"/>
