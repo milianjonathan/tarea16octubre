@@ -22,8 +22,8 @@ public class Busqueda extends javax.swing.JFrame {
     public static Buscar busqueda1;
     public Busqueda() {
         initComponents();
-        //Conexion con = new Conexion("jdbc:sqlserver://localhost:1433;databaseName=TAREA_MVC;user=usrTIENDA;password=123456;");
-        Conexion conexion = new Conexion("jdbc:sqlserver://LAPTOP-1GA811GS:1433;database=TAREA_MVC; integratedSecurity=true;");
+        Conexion con = new Conexion("jdbc:sqlserver://localhost:1433;databaseName=TAREA_MVC;user=usrTIENDA;password=123456;");
+        //Conexion conexion = new Conexion("jdbc:sqlserver://LAPTOP-1GA811GS:1433;database=TAREA_MVC; integratedSecurity=true;");
         conector = conexion.Conectar();
         busqueda1 = new Buscar(conector);
         llenarTabla();

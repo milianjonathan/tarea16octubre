@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 public class JF extends javax.swing.JFrame {
 
     Conexion con = new Conexion("jdbc:sqlserver://localhost:1433;databaseName=TAREA_MVC;user=usrTIENDA;password=123456;");
+    //Conexion con = new Conexion("jdbc:sqlserver://LAPTOP-1GA811GS:1433;database=TAREA_MVC; integratedSecurity=true;");
 
     /**
      * Creates new form JF
