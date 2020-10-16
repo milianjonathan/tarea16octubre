@@ -29,6 +29,7 @@ public class Login {
     }
 
     public boolean crearUsuario(modeloLogin login) {
+        int verificador = 0;
         try {
             PreparedStatement sql = conection.prepareStatement("if not exists (select * from sysobjects where name='TB_LOGIN' and xtype='U')\n"
                     + "CREATE TABLE TB_LOGIN(\n"
@@ -38,17 +39,21 @@ public class Login {
                     + "rol INT NOT NULL);");
             
             sql.execute();
-            PreparedStatement insertar = conection.prepareStatement("INSERT INTO TB_LOGIN VALUES(?,?,?,?)");
-            insertar.setString(2, login.getNombre());
-            insertar.setString(3, login.getPass());
-            insertar.setInt(4, login.getRango());
-
-            return insertar.execute();
+            PreparedStatement insertar = conection.prepareStatement("INSERT INTO TB_LOGIN VALUES(?,?,?)");
+            insertar.setString(1, login.getNombre());
+            insertar.setString(2, login.getPass());
+            insertar.setInt(3, login.getRango());
+            
+            if(insertar.executeUpdate()==1){
+                return true;
+            }else{
+                return false;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-
+        
     }
 
     public int Logear(modeloLogin login) {

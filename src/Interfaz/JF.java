@@ -14,14 +14,14 @@ import Modelo.modeloLogin;
  * @author cosio
  */
 public class JF extends javax.swing.JFrame {
-<<<<<<< Updated upstream
+
 
     Conexion con = new Conexion("jdbc:sqlserver://localhost:1433;databaseName=TAREA_MVC;user=usrTIENDA;password=123456;");
 
-=======
-    Conexion con = new Conexion("jdbc:sqlserver://localhost\\SQLEXPRESS:1433;database=TAREA_MVC;user=usrTIENDA;password=123456;");
+
+ 
    
->>>>>>> Stashed changes
+
     /**
      * Creates new form JF
      */
