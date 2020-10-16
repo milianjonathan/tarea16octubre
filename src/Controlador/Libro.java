@@ -1,14 +1,11 @@
 package Controlador;
 
-import java.sql.Connection;
 import Modelo.modeloLibro;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -63,5 +60,24 @@ public class Libro {
         }
         return lib;
 
+    }
+    
+    //Javier
+    public void Seleccionar_libros(DefaultTableModel model){
+        try {
+            PreparedStatement sql = conection.prepareStatement("execute obtener_libros");
+            ResultSet rs = sql.executeQuery();
+            String[] datos = new String[5];
+            while(rs.next()){
+                for(int i =0; i<7;i++){
+                    datos[i] = rs.getString(i+1);
+                }
+                model.addRow(datos);
+            }
+            rs.close();
+            sql.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Libro.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

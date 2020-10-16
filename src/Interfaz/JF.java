@@ -176,7 +176,7 @@ public class JF extends javax.swing.JFrame {
         System.out.println(reslt);
         if (reslt == 1) {
             System.out.println("Bienvenido");
-            Menu men = new Menu();
+            Menu men = new Menu(ml);
             men.setVisible(true);
             this.setVisible(false);
         } else {

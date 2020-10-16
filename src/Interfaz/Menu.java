@@ -5,18 +5,34 @@
  */
 package Interfaz;
 
+import Modelo.modeloLogin;
+
 /**
  *
  * @author cosio
  */
 public class Menu extends javax.swing.JFrame {
-
+    modeloLogin lg;
+    ABC registros = new ABC();
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    public Menu(modeloLogin lg){
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.lg = lg;
+        
+        if(lg.getRango() == 1){
+            
+        }else if(lg.getRango() == 2){
+            btnInsertar.setEnabled(false);
+            btnBorrar.setEnabled(false);
+            btnActualizar.setEnabled(false);
+        }
     }
 
     /**
@@ -131,7 +147,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
-        // TODO add your handling code here:
+        registros.setVisible(true);
     }//GEN-LAST:event_btnInsertarActionPerformed
 
 
