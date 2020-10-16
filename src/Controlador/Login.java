@@ -29,7 +29,6 @@ public class Login {
     }
 
     public boolean crearUsuario(modeloLogin login) {
-        int verificador = 0;
         try {
             PreparedStatement sql = conection.prepareStatement("if not exists (select * from sysobjects where name='TB_LOGIN' and xtype='U')\n"
                     + "CREATE TABLE TB_LOGIN(\n"
@@ -64,7 +63,7 @@ public class Login {
             //Función: esta funcion toma los valores de usuario y password y devuelve 1 si son correctos o 2 si son incorrectos
             while (rs.next() ) {
                 if ((rs.getString("usuario").equals(login.getNombre()) && rs.getString("pass").equals(login.getPass()))) {
-                    
+                    login.setRango(rs.getInt("rol"));
                     verificador = 1;
                     break;
 

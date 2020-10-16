@@ -24,10 +24,9 @@ public class JF extends javax.swing.JFrame {
     public JF() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.Contraseña.setText("");
-        this.ID.setText("");
-        this.Rol.setText("");
-        this.Usuario.setText("");
+        this.setResizable(false);
+        this.Contraseña.setText(null);
+        this.Usuario.setText(null);
     }
 
     /**
@@ -40,33 +39,14 @@ public class JF extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        ID = new javax.swing.JTextField();
         Usuario = new javax.swing.JTextField();
-        Rol = new javax.swing.JTextField();
         Conectarse = new javax.swing.JButton();
         Contraseña = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("HP Simplified", 3, 18)); // NOI18N
-        jLabel1.setText("ID");
-
-        ID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IDActionPerformed(evt);
-            }
-        });
-
-        Rol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RolActionPerformed(evt);
-            }
-        });
 
         Conectarse.setFont(new java.awt.Font("HP Simplified", 3, 14)); // NOI18N
         Conectarse.setText("Conectarse");
@@ -82,22 +62,14 @@ public class JF extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("HP Simplified", 3, 18)); // NOI18N
         jLabel6.setText("Contraseña");
 
-        jLabel7.setFont(new java.awt.Font("HP Simplified", 3, 18)); // NOI18N
-        jLabel7.setText("Rol");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(34, 34, 34)
-                        .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,13 +78,8 @@ public class JF extends javax.swing.JFrame {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
-                                .addComponent(Usuario))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Contraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                            .addComponent(Rol))))
+                                .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(Contraseña, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(97, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -122,13 +89,9 @@ public class JF extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(107, 107, 107)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -137,11 +100,7 @@ public class JF extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel6))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(Conectarse)
                 .addGap(21, 21, 21))
         );
@@ -160,36 +119,36 @@ public class JF extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_IDActionPerformed
-
-    private void RolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RolActionPerformed
-
     private void ConectarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConectarseActionPerformed
+        int id=0;
+        int rol = 0;
         Login log = new Login(con.Conectar());
-        if (this.ID.getText().isEmpty() || this.Usuario.getText().isEmpty() || this.Contraseña.getText().isEmpty() || this.Rol.getText().isEmpty()) {
+        if (this.Usuario.getText().isEmpty() || this.Contraseña.getText().isEmpty() ) {
             JOptionPane.showMessageDialog(null, "Llene los datos correspondientes", "AVISO", 2);
         } else {
-            modeloLogin ml = new modeloLogin(Integer.parseInt(this.ID.getText()), this.Usuario.getText(), this.Contraseña.getText(), Integer.parseInt(this.Rol.getText()));
+            modeloLogin ml = new modeloLogin(id, this.Usuario.getText(), this.Contraseña.getText(), rol);
             int reslt = log.Logear(ml);
-            System.out.println(reslt);
+            rol = ml.getRango();
             if (reslt == 1) {
-                System.out.println("Bienvenido");
-                Menu men = new Menu(ml);
+                if(rol ==1){
+                   Menu men = new Menu(ml);
                 men.setVisible(true);
-                this.setVisible(false);
+                this.setVisible(false); 
+                }else{
+                    if(rol==2){
+                        menuUsuario menu2 = new menuUsuario();
+                        this.setVisible(false);
+                        menu2.setVisible(true);
+                    }
+                }
+                
+                
             } else {
                 System.out.println("Logeo Incorrecto");
             }
         }
     }//GEN-LAST:event_ConectarseActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -225,14 +184,10 @@ public class JF extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Conectarse;
     private javax.swing.JPasswordField Contraseña;
-    private javax.swing.JTextField ID;
-    private javax.swing.JTextField Rol;
     private javax.swing.JTextField Usuario;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,63 +23,67 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cbxGenero" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="txtId" min="-2" pref="170" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtFecha" min="-2" pref="170" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="txtNombre" min="-2" pref="170" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtAutor" min="-2" pref="170" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="txtPaginas" min="-2" pref="170" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnRegresarMenu" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnIngresarR" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnActualizarR" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnBorrarR" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="246" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="555" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="555" max="-2" attributes="0"/>
+                      <EmptySpace pref="51" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" min="-2" pref="385" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="txtId" pref="170" max="32767" attributes="0"/>
+                                                  <Component id="cbxGenero" max="32767" attributes="0"/>
+                                                  <Component id="txtFecha" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                                              <Component id="txtNombre" min="-2" pref="170" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                                              <Component id="txtAutor" min="-2" pref="170" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="txtPaginas" min="-2" pref="170" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnIngresarR" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnActualizarR" max="32767" attributes="0"/>
+                                  <Component id="btnBorrarR" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnRegresarMenu" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -100,35 +104,41 @@
                   <Component id="cbxGenero" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnActualizarR" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtFecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnBorrarR" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnBorrarR" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="txtFecha" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnRegresarMenu" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnRegresarMenu" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtAutor" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtAutor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtPaginas" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="111" max="-2" attributes="0"/>
+                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

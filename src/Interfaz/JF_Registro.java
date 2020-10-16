@@ -22,9 +22,11 @@ public class JF_Registro extends javax.swing.JFrame {
      * Creates new form JF_Registro
      */
     public JF_Registro() {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
     }
 
     /**
@@ -178,27 +180,32 @@ public class JF_Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_UsuarioActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        int id = 0;
+        
         Login log = new Login(con.Conectar());
-        modeloLogin ml = new modeloLogin(id, this.Usuario.getText(), this.Pass.getText(), Integer.parseInt(this.Rol.getText()));
-        if (passConfirm.getText().equals(Pass.getText())) {
-            boolean reslt = log.crearUsuario(ml);
-            if (reslt != true) {
-                System.out.println("Falla el insert");
-                System.out.println(reslt);
-            } else {
-                System.out.println("Se inserta con exito");
-                JOptionPane.showMessageDialog(null, "Usuario creado con Éxito","INFORMACIÓN",3);
-                Menu men = new Menu();
-                men.setVisible(true);
-                this.setVisible(false);
+        
+        if (Usuario.getText().isEmpty() || passConfirm.getText().isEmpty()|| Pass.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos", "ERROR", 3);
+        } else {
+            int id = 0;
+            modeloLogin ml = new modeloLogin(id, this.Usuario.getText(), this.Pass.getText(), Integer.parseInt(this.Rol.getText()));
+            if (passConfirm.getText().equals(Pass.getText())) {
+                boolean reslt = log.crearUsuario(ml);
+                if (reslt != true) {
+                    System.out.println("Falla el insert");
+                    System.out.println(reslt);
+                } else {
+                    System.out.println("Se inserta con exito");
+                    JOptionPane.showMessageDialog(null, "Usuario creado con Éxito", "INFORMACIÓN", 3);
+                    Menu men = new Menu();
+                    men.setVisible(true);
+                    this.setVisible(false);
 
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden", "Advertencia", 3);
             }
-        }else{
-            JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden","Advertencia",3);
         }
 
-        // TODO add your handling code here:
     }//GEN-LAST:event_RegistrarActionPerformed
 
     private void RolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RolActionPerformed
