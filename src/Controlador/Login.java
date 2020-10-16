@@ -55,7 +55,7 @@ public class Login {
         int verificador = 0;
         try {
             Statement resultados = conection.createStatement();
-            ResultSet rs = resultados.executeQuery("SELECT * FROM TB_LOGIN");
+            ResultSet rs = resultados.executeQuery("obtener_usuarios");
             //Función: esta funcion toma los valores de usuario y password y devuelve 1 si son correctos o 2 si son incorrectos
             while (rs.next() ) {
                 if ((rs.getString("usuario").equals(login.getNombre()) && rs.getString("pass").equals(login.getPass())) 
