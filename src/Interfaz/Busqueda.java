@@ -209,9 +209,17 @@ public class Busqueda extends javax.swing.JFrame {
     }//GEN-LAST:event_JTFbuscarCaretUpdate
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Menu menu = new Menu();
+        int rol = JF.getRol();
+        if(rol == 1){
+            Menu menu = new Menu();
         menu.setVisible(true);
         this.setVisible(false);
+        }else{
+            menuUsuario men2 = new menuUsuario();
+            men2.setVisible(true);
+            this.setVisible(false);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

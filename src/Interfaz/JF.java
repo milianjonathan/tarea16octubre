@@ -15,7 +15,12 @@ import javax.swing.JOptionPane;
  * @author cosio
  */
 public class JF extends javax.swing.JFrame {
+    public static int rol ;
 
+    public static int getRol() {
+        return rol;
+    }
+    
     Conexion con = new Conexion("jdbc:sqlserver://localhost:1433;databaseName=TAREA_MVC;user=usrTIENDA;password=123456;");
     //Conexion con = new Conexion("jdbc:sqlserver://LAPTOP-1GA811GS:1433;database=TAREA_MVC; integratedSecurity=true;");
 
@@ -122,20 +127,22 @@ public class JF extends javax.swing.JFrame {
 
     private void ConectarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConectarseActionPerformed
         int id = 0;
-        int rol = 0;
+        int rol1 ;
         Login log = new Login(con.Conectar());
         if (this.Usuario.getText().isEmpty() || this.Contraseña.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Llene los datos correspondientes", "AVISO", 2);
         } else {
             modeloLogin ml = new modeloLogin(id, this.Usuario.getText(), this.Contraseña.getText(), rol);
             int reslt = log.Logear(ml);
-            rol = ml.getRango();
+            rol1 = ml.getRango();
             if (reslt == 1) {
-                if (rol == 1) {
+                if (rol1 == 1) {
                     Menu men = new Menu();
                     men.setVisible(true);
                     this.setVisible(false);
-                } else if (rol == 2) {
+                    this.rol = rol1;
+                } else if (rol1 == 2) {
+                    this.rol = rol1;
                     menuUsuario menu2 = new menuUsuario();
                     this.setVisible(false);
                     menu2.setVisible(true);
