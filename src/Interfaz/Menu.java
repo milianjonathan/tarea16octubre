@@ -6,8 +6,7 @@
 package Interfaz;
 
 import Modelo.modeloLogin;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
 
 /**
  *
@@ -51,6 +50,11 @@ public class Menu extends javax.swing.JFrame {
 
         btnBuscar.setFont(new java.awt.Font("HP Simplified", 3, 18)); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnInsertar.setFont(new java.awt.Font("HP Simplified", 3, 18)); // NOI18N
         btnInsertar.setText("Insertar");
@@ -199,6 +203,13 @@ public class Menu extends javax.swing.JFrame {
         registros.Mostrar_Tabla();
         this.setVisible(false);
     }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        Busqueda buscar = new Busqueda();
+        buscar.setVisible(true);
+        this.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
