@@ -95,7 +95,9 @@ public class menuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_exitActionPerformed
 
     private void consultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaActionPerformed
-
+        this.setVisible(false);
+        Busqueda bd = new Busqueda();
+        bd.setVisible(true);
         
         // TODO add your handling code here:
     }//GEN-LAST:event_consultaActionPerformed
