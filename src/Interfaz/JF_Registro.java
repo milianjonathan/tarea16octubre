@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class JF_Registro extends javax.swing.JFrame {
 
-    Conexion con = new Conexion("jdbc:sqlserver://localhost:1433;databaseName=TAREA_MVC;user=usrTIENDA;password=123456;");
+    Conexion con = new Conexion("jdbc:sqlserver://umgp2.database.windows.net:1433;database=BDTIENDA;user=umg;password=seguridad22;");
 
     /**
      * Creates new form JF_Registro

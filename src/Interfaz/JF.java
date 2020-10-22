@@ -8,6 +8,9 @@ package Interfaz;
 import Controlador.Login;
 import Modelo.Conexion;
 import Modelo.modeloLogin;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,9 +24,9 @@ public class JF extends javax.swing.JFrame {
         return rol;
     }
     
-    Conexion con = new Conexion("jdbc:sqlserver://localhost:1433;databaseName=TAREA_MVC;user=usrTIENDA;password=123456;");
+    Conexion con = new Conexion("jdbc:sqlserver://umgp2.database.windows.net:1433;database=BDTIENDA;");
     //Conexion con = new Conexion("jdbc:sqlserver://LAPTOP-1GA811GS:1433;database=TAREA_MVC; integratedSecurity=true;");
-
+    
     /**
      * Creates new form JF
      */
@@ -33,6 +36,8 @@ public class JF extends javax.swing.JFrame {
         this.setResizable(false);
         this.Contraseña.setText(null);
         this.Usuario.setText(null);
+        
+            
     }
 
     /**

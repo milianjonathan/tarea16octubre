@@ -21,8 +21,9 @@ public class Conexion {
 
         //Tratando de conectarse con la base de datos
         try {
-
-            conector = DriverManager.getConnection(url_conexion);
+            String user = "umg";
+            String password="seguridad22";
+            conector = DriverManager.getConnection(url_conexion,user, password);
             System.out.println("Hola");
 
         } catch (SQLException ex) {

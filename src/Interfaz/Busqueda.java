@@ -22,7 +22,7 @@ public class Busqueda extends javax.swing.JFrame {
     public static Buscar busqueda1;
     public Busqueda() {
         initComponents();
-        Conexion con = new Conexion("jdbc:sqlserver://localhost:1433;databaseName=TAREA_MVC;user=usrTIENDA;password=123456;");
+        Conexion con = new Conexion("jdbc:sqlserver://umgp2.database.windows.net:1433;database=BDTIENDA;user=umg;password=seguridad22;");
         //Conexion conexion = new Conexion("jdbc:sqlserver://LAPTOP-1GA811GS:1433;database=TAREA_MVC; integratedSecurity=true;");
         conector = con.Conectar();
         busqueda1 = new Buscar(conector);
